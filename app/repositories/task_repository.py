@@ -27,4 +27,12 @@ def delete_task(db: Session, task_id: int):
         db.commit()
     return task
 
+# Count employee tasks
+def get_task_by_employee(db: Session, employee_id: int):
+    return db.query(Task).filter(Task.employee_id == employee_id).all()
+
+# Count employee tasks
+def get_task_count_by_employee(db: Session, employee_id: int):
+    return db.query(Task).filter(Task.employee_id == employee_id).count()
+
 
