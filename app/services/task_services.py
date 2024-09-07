@@ -12,3 +12,18 @@ def create_task(db: Session, task_data):
         raise HTTPException(status_code=400, detail="Invalid task status.")
 
     return task_repository.create_task(db, task_data)
+
+
+def get_all_tasks(db: Session):
+    tasks = task_repository.get_all_tasks(db)
+    if not tasks:
+        raise HTTPException(status_code=404, detail="No tasks found.")
+    return tasks
+
+
+def delete_task(db: Session, task_id: int):
+    task = task_repository.get_task_by_id(db, task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found.")
+
+    return task_repository.delete_task(db, task_id)

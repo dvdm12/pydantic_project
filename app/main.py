@@ -9,5 +9,5 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Registrar las rutas
+# Register paths
 app.include_router(employee_routes.router, prefix="/api/v1", tags=["Employees"])

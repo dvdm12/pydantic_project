@@ -36,3 +36,7 @@ def get_task_count_by_employee(db: Session, employee_id: int):
     return db.query(Task).filter(Task.employee_id == employee_id).count()
 
 
+def get_task_by_id(db: Session, task_id: int):
+    return db.query(Task).filter(Task.id == task_id).first()
+
+
