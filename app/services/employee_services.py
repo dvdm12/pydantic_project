@@ -14,3 +14,10 @@ def create_employee(db: Session, employee_data):
     if existing_employee:
         raise HTTPException(status_code=400, detail="Email already in use.")
     return employee_repository.create_employee(db, employee_data)
+
+
+def get_all_employees(db: Session):
+    employees = employee_repository.get_all_employees(db)
+    if not employees:
+        raise HTTPException(status_code=404, detail="No employees found.")
+    return employees
