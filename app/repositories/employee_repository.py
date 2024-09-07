@@ -14,6 +14,9 @@ def create_employee(db: Session, employee_data):
     db.refresh(new_employee)
     return new_employee
 
+#We got an employee instance by filter by id
+def get_employees_by_id(db: Session, employee_id):
+    return db.query(Employee).filter(Employee.id == employee_id).all()
 
 #Removes an employee from the database by their ID.
 # Returns the deleted Employee object if found;

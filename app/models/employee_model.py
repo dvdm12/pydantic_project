@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from app.config import Base
+from app.config.config import Base
 
 
 class Employee(Base):
