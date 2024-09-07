@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from app.config.config import Base
+from app.schemas.task_schema import Task
 
 
 class Employee(Base):
