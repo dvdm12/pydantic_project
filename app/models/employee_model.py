@@ -1,9 +1,11 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
+from pydantic import BaseModel
+
 from app.config.config import Base
-from app.schemas.task_schema import Task
 
 
+# Modelo SQLAlchemy para Employee
 class Employee(Base):
     __tablename__ = "employees"
 
@@ -12,4 +14,19 @@ class Employee(Base):
     last_name = Column(String(50), index=True)
     email = Column(String(100), unique=True, index=True)
 
+
     tasks = relationship("Task", back_populates="employee")
+
+
+
+class EmployeeBase(BaseModel):
+    id: int
+    first_name: str
+    last_name: str
+    email: str
+
+
+    tasks: list["TaskBase"]
+
+    class Config:
+        from_attributes = True

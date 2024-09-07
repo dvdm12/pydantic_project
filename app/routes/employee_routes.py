@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.schemas.employee_schema import EmployeeCreate, Employee
 from app.services import employee_services
 from app.config.config import get_db
+from app.models.task_model import Task
 
 router = APIRouter()
 
