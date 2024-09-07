@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
 
-# uploud environment variable
+# upload environment variable
 load_dotenv()
 
 
@@ -16,7 +16,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-# Dependency fot get sesion conection
+# Dependency fot got session connection
 def get_db():
     db = SessionLocal()
     try:
