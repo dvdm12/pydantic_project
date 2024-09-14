@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 # upload environment variable
 load_dotenv()
 
-
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 # database's configuration connection

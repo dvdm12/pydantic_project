@@ -8,7 +8,7 @@ def create_task(db: Session, task_data):
     if task_count >= 10:
         raise HTTPException(status_code=400, detail="Employee has already reached the task limit.")
 
-    if task_data["status"] not in ["pending task", "task completed"]:
+    if task_data["status"] not in ["pending", "completed"]:
         raise HTTPException(status_code=400, detail="Invalid task status.")
 
     return task_repository.create_task(db, task_data)
@@ -25,5 +25,8 @@ def delete_task(db: Session, task_id: int):
     task = task_repository.get_task_by_id(db, task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found.")
+
+    if task.status != 'completed':
+        raise HTTPException(status_code=400, detail="Only completed tasks can be deleted.")
 
     return task_repository.delete_task(db, task_id)

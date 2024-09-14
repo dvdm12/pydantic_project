@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from app.repositories import employee_repository, task_repository
 from fastapi import HTTPException
 
+# it deleted an employee by id
 def delete_employee(db: Session, employee_id: int):
     tasks = task_repository.get_task_by_employee(db, employee_id)
     if tasks:

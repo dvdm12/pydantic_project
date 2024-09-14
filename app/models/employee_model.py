@@ -14,19 +14,9 @@ class Employee(Base):
     last_name = Column(String(50), index=True)
     email = Column(String(100), unique=True, index=True)
 
-
     tasks = relationship("Task", back_populates="employee")
 
 
 
-class EmployeeBase(BaseModel):
-    id: int
-    first_name: str
-    last_name: str
-    email: str
 
 
-    tasks: list["TaskBase"]
-
-    class Config:
-        from_attributes = True

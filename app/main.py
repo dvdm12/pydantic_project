@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.models import employee_model, task_model
-from app.routes import employee_routes
+from app.routes import employee_routes, task_routes
 
 # FastAPI instance
 app = FastAPI(
@@ -10,4 +10,6 @@ app = FastAPI(
 )
 
 # Register paths
-app.include_router(employee_routes.router, prefix="/api/v1", tags=["Employees"])
+app.include_router(employee_routes.router, prefix="/employees", tags=["Employees"])
+
+app.include_router(task_routes.router, prefix="/tasks", tags=["Tasks"])

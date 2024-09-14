@@ -1,17 +1,16 @@
-from pydantic import BaseModel, EmailStr
-from typing import List
+from pydantic import BaseModel, EmailStr, Field
+
 
 class EmployeeBase(BaseModel):
-    first_name: str
-    last_name: str
-    email: EmailStr
+    first_name: str = Field(..., max_length=20)
+    last_name: str = Field(..., max_length=20)
+    email: EmailStr = Field(..., max_length=50)
 
-class EmployeeCreate(EmployeeBase):
+    model_config = {
+        'from_attributes': True
+    }
+
+
+class EmployeeDto(EmployeeBase):
     pass
 
-class Employee(EmployeeBase):
-    id: int
-    tasks: List['Task'] = []
-
-    class Config:
-        orm_mode = True
