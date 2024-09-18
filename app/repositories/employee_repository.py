@@ -27,3 +27,9 @@ def delete_employee(db: Session, employee_id: int):
         db.delete(employee)
         db.commit()
     return employee
+
+
+def get_employee_by_email(db: Session, email: str)-> Employee:
+    employee = db.query(Employee).filter(Employee.email == email).first()
+    return employee
+
