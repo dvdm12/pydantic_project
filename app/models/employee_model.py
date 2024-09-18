@@ -13,8 +13,10 @@ class Employee(Base):
     first_name = Column(String(50), index=True)
     last_name = Column(String(50), index=True)
     email = Column(String(100), unique=True, index=True)
+    hashed_password = Column(String(100))
 
     tasks = relationship("Task", back_populates="employee")
+    products= relationship("ProductORM", back_populates="employee")
 
 
 
